@@ -25,7 +25,6 @@
     "meteor.SpamMixin",
     "meteor.StarscriptMixin",
     "meteor.SystemsMixin",
-    "meteor.TitleScreenCreditsMixin",
     "meteor.WAccountMixin"
   ],
   "injectors": {

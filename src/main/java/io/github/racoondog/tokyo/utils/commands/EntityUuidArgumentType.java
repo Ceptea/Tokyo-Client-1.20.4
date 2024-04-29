@@ -42,7 +42,7 @@ public class EntityUuidArgumentType implements ArgumentType<Entity> {
         String argument = reader.readUnquotedString();
 
         for (var entity : mc.world.getEntities()) {
-            if (argument.equals(entity.getEntityName())) return entity;
+            if (argument.equals(entity.getName())) return entity;
         }
 
         throw NO_SUCH_ENTITY.create(argument);
@@ -53,7 +53,10 @@ public class EntityUuidArgumentType implements ArgumentType<Entity> {
         List<String> possibleSuggestions = new ArrayList<>();
 
         for (var entity : mc.world.getEntities()) {
-            possibleSuggestions.add(entity.getEntityName());
+            if (entity.getName() == null) {
+                continue;
+            }
+            possibleSuggestions.add(entity.getName().getLiteralString());
         }
 
         return CommandSource.suggestMatching(possibleSuggestions, builder);
@@ -61,6 +64,6 @@ public class EntityUuidArgumentType implements ArgumentType<Entity> {
 
     @Override
     public Collection<String> getExamples() {
-        return List.of(mc.player.getEntityName(), mc.player.getUuidAsString());
+        return List.of(mc.player.getName().getLiteralString(), mc.player.getUuidAsString());
     }
 }

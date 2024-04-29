@@ -12,7 +12,6 @@ import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
@@ -68,15 +67,16 @@ public class TokyoBetterChat extends Module {
     }
 
     private void stripFancy(Text text) {
-        for (var sibling : text.getSiblings()) stripFancy(sibling);
-
-        if (text instanceof MutableText mutableText && mutableText.getContent() instanceof LiteralTextContent literalTextContent) {
-            StringBuilder sb = new StringBuilder(literalTextContent.string().length());
-            for (var c : literalTextContent.string().toCharArray()) {
-                if (unicodeTable.containsKey(c)) sb.append(unicodeTable.get(c));
-                else sb.append(c);
-            }
-            ((IMutableText) mutableText).tokyo$setContent(new LiteralTextContent(sb.toString()));
-        }
+//        for (var sibling : text.getSiblings()) stripFancy(sibling);
+//        text.getString().strip();
+//        text.
+//        if (text instanceof MutableText mutableText && mutableText.getContent() instanceof LiteralTextContent literalTextContent) {
+//            StringBuilder sb = new StringBuilder(literalTextContent.string().length());
+//            for (var c : literalTextContent.string().toCharArray()) {
+//                if (unicodeTable.containsKey(c)) sb.append(unicodeTable.get(c));
+//                else sb.append(c);
+//            }
+//            ((IMutableText) mutableText).tokyo$setContent(new LiteralTextContent(sb.toString()));
+//        }
     }
 }
